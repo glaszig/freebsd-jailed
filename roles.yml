@@ -1,0 +1,3 @@
+---
+- src: JoergFiedler.freebsd-jail-host
+  version: v2.0.0

@@ -1,16 +1,17 @@
 ---
 - name: Update root user
-  lineinfile: dest={{ jail_home.stdout }}/etc/master.passwd
-              line="root:*:0:0::0:0:root at {{ jail_name }}:/root:/bin/csh"
-              regexp="^root:.*"
-              state=present
+  lineinfile:
+    dest: '{{ jail_home.stdout }}/etc/master.passwd'
+    line: 'root:*:0:0::0:0:root at {{ jail_name }}:/root:/bin/csh'
+    regexp: '^root:.*'
+    state: present
   register: root_updated
 
 - name: Update user database I
   command: pwd_mkdb -d {{ jail_home.stdout }}/etc {{ jail_home.stdout }}/etc/master.passwd
-  when: root_updated|changed
+  when: root_updated | changed
 
 - name: Update user database II
   command: pwd_mkdb -p -d {{ jail_home.stdout }}/etc {{ jail_home.stdout }}/etc/master.passwd
-  when: root_updated|changed
+  when: root_updated | changed
 

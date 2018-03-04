@@ -6,7 +6,7 @@
     line: '*.*      @{{ syslogd_server }}'
     insertafter: '^#\s+Consult the syslog.conf'
   notify:
-  - Reload {{ jail_name }} s syslogd
+    - Reload {{ jail_name }} s syslogd
 
 - name: Enable remote syslog logging
   lineinfile:
@@ -14,5 +14,5 @@
     regexp: 'syslogd_flags='
     line: 'syslogd_flags="-c -s"'
   notify:
-  - Reload {{ jail_name }} s syslogd
+    - Reload {{ jail_name }} s syslogd
 
