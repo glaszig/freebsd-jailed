@@ -19,7 +19,7 @@ script:
 - ansible-galaxy install -p ./roles -r .requirements.yaml
 - vagrant box add JoergFiedler/FreeBSD-11.1 --provider aws
 - ANSIBLE_ROLES_PATH=./roles vagrant up --provider aws
-- vagrant ssh -c "iocage list -h"
+- vagrant ssh -c "iocage exec jailed top"
 
 after_script:
 - vagrant destroy -f
