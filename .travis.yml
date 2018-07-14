@@ -16,8 +16,9 @@ before_script:
 - ln -s ./ JoergFiedler.freebsd-jail-host
 
 script:
+- ansible-galaxy install -p ./roles -r .requirements.yaml
 - vagrant box add JoergFiedler/FreeBSD-11.1 --provider aws
-- vagrant up --provider aws
+- ANSIBLE_ROLES_PATH=./roles vagrant up --provider aws
 - vagrant ssh -c "iocage list -h"
 
 after_script:

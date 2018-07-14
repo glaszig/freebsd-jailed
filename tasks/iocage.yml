@@ -11,7 +11,7 @@
   command: /usr/local/bin/iocage create \
     --name {{ jail_name }} \
     --release {{ jail_freebsd_release }}
-  when: jail_exists | failed
+  when: jail_exists is failed
   register: jail_created
   notify:
     - Start iocage
@@ -21,11 +21,25 @@
   with_items:
     - 'boot=on'
     - 'vnet=off'
+    - 'resolver={{ jail_net_resolver }}'
     - 'ip4_addr=lo0|{{ jail_net_ip }}/32'
-  when: jail_created | changed
+  when: jail_created is changed
 
 - name: Register home diretory
   command: echo {{ host_ioc_jails_dir }}/{{ jail_name }}/root
   changed_when: false
   register: jail_home
 
+- name: Copy default resolv.conf
+  copy:
+    src: '/etc/resolv.conf'
+    dest: '{{ jail_home.stdout }}/etc/resolv.conf'
+    remote_src: true
+  when: jail_created is changed
+
+- name: Update resolv.conf
+  replace:
+    path: '{{ jail_home.stdout }}/etc/resolv.conf'
+    regexp: '(nameserver\s+).*$'
+    replace: '\1{{ jail_net_resolver }}'
+  when: jail_net_resolver != 'none'

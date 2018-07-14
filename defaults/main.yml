@@ -3,10 +3,13 @@
 jail_build_server_enabled: false
 jail_build_server_pubkey: 'poudriere.pub'
 jail_build_server_url: ''
+
 jail_domain: 'darkcity'
-jail_freebsd_release: '11.1-RELEASE'
+jail_freebsd_release: '11.2-RELEASE'
 jail_hostname: '{{ jail_name }}.{{ jail_domain }}'
 jail_name: '{{ jail_net_ip }}'
+
 jail_net_if: 'lo0'
+jail_net_resolver: 'none'
 
 syslog_server: ''
