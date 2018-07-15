@@ -12,7 +12,7 @@ before_script:
 - ssh-keygen -y -f ~/.vagrant.d/insecure_private_key > ~/.vagrant.d/insecure_private_key.pub
 - ln -s ./ JoergFiedler.freebsd-jailed
 script:
-- ansible-galaxy install -p ./ -r .requirements.yaml
+- ansible-galaxy install -p ./ -r .requirements.yml
 - vagrant box add JoergFiedler/FreeBSD-11.2 --provider aws
 - vagrant up --provider aws
 - vagrant ssh -c "sudo iocage exec jailed ps xa"

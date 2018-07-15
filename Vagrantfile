@@ -8,7 +8,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.define 'jail-host' do |host|
     host.vm.provision 'ansible', type: 'ansible' do |ansible|
-      ansible.playbook = './.playbook.yaml'
+      ansible.playbook = './.playbook.yml'
     end
   end
 
