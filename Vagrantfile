@@ -33,7 +33,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     global.ssh.username = 'ec2-user'
 
     global.vm.provision 'ansible', type: 'ansible' do |ansible|
-      ansible.extra_vars = './.ec2.yaml'
+      ansible.extra_vars = './.ec2.yml'
     end
 
     aws.access_key_id = ENV['AWS_ACCESS_KEY_ID']
