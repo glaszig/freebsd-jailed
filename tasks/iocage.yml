@@ -1,4 +1,3 @@
----
 - debug: msg='Running tasks for jail {{ jail_name }}'
 
 - name: Check if jail already exists

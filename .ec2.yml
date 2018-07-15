@@ -1,4 +1,3 @@
----
 # ec2 specific settings
 
 host_ioc_zpool_devices: 'xbd5' # device settings used when creating the pool

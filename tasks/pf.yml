@@ -1,4 +1,3 @@
----
 - name: Make sure old pf configuration file for nat is gone
   file:
     path: '/etc/pf.anchor.nat-jail.{{ jail_name }}-dns.conf'

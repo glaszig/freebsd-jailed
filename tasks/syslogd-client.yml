@@ -1,4 +1,3 @@
----
 - name: Configure syslog
   lineinfile:
     dest: '{{ jail_home.stdout }}/etc/syslog.conf'

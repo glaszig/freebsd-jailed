@@ -1,4 +1,3 @@
----
 - name: Reload {{ jail_name }} s syslogd
   command: /usr/local/sbin/iocage exec {{ jail_name }} service syslogd reload
   when: not jail_created is changed

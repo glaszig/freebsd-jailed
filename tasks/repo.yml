@@ -1,5 +1,3 @@
----
-
 - name: Create directory which will hold build repo conf
   file:
     path: '{{ jail_home.stdout }}/usr/local/etc/pkg/repos'

@@ -1,4 +1,3 @@
----
 - name: Update root user
   lineinfile:
     dest: '{{ jail_home.stdout }}/etc/master.passwd'

@@ -1,3 +1,2 @@
----
 - src: JoergFiedler.freebsd-jail-host
-  version: v2.0.0
+  version: v3.0.0

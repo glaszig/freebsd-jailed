@@ -1,4 +1,3 @@
----
 - hosts: all
   become: true
 
@@ -11,6 +10,4 @@
       vars:
         jail_net_ip: '10.1.0.10'
         jail_name: 'jailed'
-        use_ssmtp: true
-      tags:
-        - _jailed
+        jail_freebsd_release: '11.2-RELEASE'
