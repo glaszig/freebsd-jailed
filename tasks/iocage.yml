@@ -23,7 +23,7 @@
   command: /usr/local/sbin/iocage set {{ item }} {{ jail_uuid.stdout }}
   with_items:
   - 'boot=on'
-  - 'hostname={{ jail_hostname }}'
+  - 'host_hostname={{ jail_hostname }}'
   when: jail_created|changed
 
 - name: Register home diretory
