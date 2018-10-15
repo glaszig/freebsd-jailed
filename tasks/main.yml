@@ -3,9 +3,9 @@
   tags: jailed
 - include: net.yml
   tags: jailed
-- include: repo.yml
-  tags: jailed
 - include: pf.yml
+  tags: jailed
+- include: repo.yml
   tags: jailed
 - include: user.yml
   tags: jailed
