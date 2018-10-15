@@ -8,7 +8,7 @@
   register: jail_exists
 
 - name: Create jail
-  command: /usr/local/sbin/iocage create tag={{ jail_hostname }} ip4_addr={{ jail_net_ip }}
+  command: /usr/local/sbin/iocage create -n {{ jail_hostname }} ip4_addr={{ jail_net_ip }}
   when: jail_exists|failed
   register: jail_created
   notify:
