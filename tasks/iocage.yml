@@ -7,8 +7,13 @@
   changed_when: false
   register: jail_exists
 
+- name: Get running FreeBSD version
+  shell: uname -r | sed -E 's,-p[0-9]+,,'
+  register: jail_host_release_version
+  changed_when: false
+
 - name: Create jail
-  command: /usr/local/sbin/iocage create -n {{ jail_hostname }} ip4_addr={{ jail_net_ip }}
+  command: /usr/local/sbin/iocage create -n {{ jail_hostname }} ip4_addr={{ jail_net_ip }} -r {{ jail_release_version | default(jail_host_release_version.stdout) }}
   when: jail_exists|failed
   register: jail_created
   notify:
